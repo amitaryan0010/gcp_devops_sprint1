@@ -1,0 +1,19 @@
+#start
+steps:
+# build hte containter images
+- name: "gcr.io/cloud-builders/docker"
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpdevops', '.']
+  # pushg containre images
+- name: "gcr.op/cloud-builders/docker"
+  args: ["push", "gcr.io/$PROJECT_ID/gcpdevops"]
+  # deploy contaiunre images to GKE
+- name: :gcr.io/cloud-builders/gek-deploy"
+args:
+- run
+- --filename=gke.yaml
+- --image=gcr.io/$PROJECT_ID/gcpdevops
+- --location=us-central1-c
+- --cluster=cluster-1
+- --namespace=gcp-devops-prod
+options:
+  logging: CLOUD_LOGGING_ONLY
