@@ -1,1 +1,1 @@
-# This is a repo for our new GCP DevOps Sprint 1
+# This is a repo for our new GCP DevOps Sprint tasks
